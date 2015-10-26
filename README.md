@@ -1,7 +1,7 @@
 # Projeto-IA  -  Busca de rotas por agentes
 
-
-$ Angelina Sales
-$ Luana Reis
-$ Renê Alves
+<br/>----Grupo----
+<br/> $ Angelina Sales
+<br/> $ Luana Reis
+<br/> $ Renê Alves
 
