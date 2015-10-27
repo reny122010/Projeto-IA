@@ -1,0 +1,13 @@
+Recife
+Alagoas
+João-Pessoa
+Sergipe
+0 20 15 18
+20 0 15 9
+15 15 0 17
+18 9 17 0
+12
+15
+17
+1919
+
