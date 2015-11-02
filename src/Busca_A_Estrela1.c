@@ -19,8 +19,8 @@
  	printf("./Busca_A_estrela.c [nome_da_tabela.txt] [quantidade_de_locais]\n");
  }
 
- teste(void * teste){
- 	printf("%s\n", (char *) teste);
+ teste(char ** teste){
+ 	printf("%s\n"teste[0][0]);
  }
 
  int main(int argc, char** argv){
@@ -33,8 +33,8 @@
  	}
  	int quantidade_de_locais = atoi(argv[2]);
  	char nomes_dos_locais[quantidade_de_locais][TAMANHO_DA_PALAVRA];
- 	int mapa[quantidade_de_locais][quantidade_de_locais];
- 	int valores[quantidade_de_locais-1];
+ 	int valores_das_distancias[quantidade_de_locais][quantidade_de_locais];
+ 	int valores_da_cidade1_para_cidaden[quantidade_de_locais-1];
 
  	int n_origem, n_destino;
 
@@ -62,8 +62,8 @@
  		if(array_i != -1 && cont_valores < quantidade_de_locais*quantidade_de_locais){
  			cont_valores++;
 
- 			mapa[array_i][array_j] = atoi(axuliar); 			
- 			printf("%d ", mapa[array_i][array_j]);
+ 			valores_das_distancias[array_i][array_j] = atoi(axuliar); 			
+ 			printf("%d ", valores_das_distancias[array_i][array_j]);
  			if(++array_i == quantidade_de_locais){ 
  				printf("\n");
  				array_i = 0;
@@ -75,8 +75,8 @@
 		}
 
 		if(tabela_finalizada){
-			valores[cont_distancia] = atoi(axuliar);
-			printf("%d\n", valores[cont_distancia]);
+			valores_da_cidade1_para_cidaden[cont_distancia] = atoi(axuliar);
+			printf("%d\n", valores_da_cidade1_para_cidaden[cont_distancia]);
 			if(++cont_distancia == quantidade_de_locais-1){
 				break;
 			}
@@ -125,58 +125,7 @@
  	}
  	printf("Começando a busca A*\n");
 
- 	int posicao_origem = -1;
- 	aux = 0;
-
- 	while(aux < quantidade_de_locais){
- 		if(!strcmp(&nomes_dos_locais[aux][POSICAO_INICIAL], nome_origem)){
- 			posicao_origem = aux;
- 			break;
- 		}
- 		aux++;
- 	}
- 	int proxima_origem = -1, menor_distacia = 0;
-
- 	while(1){
- 		aux = 0;
- 		menor_distacia = 0;
-
- 		printf("Estamos em: %s\n", &nomes_dos_locais[posicao_origem][POSICAO_INICIAL]);
- 		printf("Os próximos locais são:\n");
- 		while(aux < quantidade_de_locais){
- 			if(mapa[posicao_origem][aux] > 0){
-
-	 			if(valores[aux] < menor_distacia || menor_distacia == 0){
-	 				menor_distacia = valores[aux];
-	 				proxima_origem = aux;	 					 				
-	 			}
-	 			printf("%s\t", &nomes_dos_locais[aux][POSICAO_INICIAL]);			
-	 		}
-	 		aux++;
- 		}
- 		aux = 0;
- 		while(aux < quantidade_de_locais){
- 			mapa[posicao_origem][aux] = 0;
- 			mapa[aux][posicao_origem] = 0;
- 			aux++;
- 		} 		
- 		
- 		printf("\nEscolhendo o destino mais próximo!\n");
-
- 		posicao_origem = proxima_origem;
- 		printf("Destino selecionado: %s\n", &nomes_dos_locais[proxima_origem][POSICAO_INICIAL]);
-
- 		if(!strcmp(&nomes_dos_locais[posicao_origem][POSICAO_INICIAL],nome_destino)){
- 			printf("\nChegou à: %s \n", &nomes_dos_locais[posicao_origem][POSICAO_INICIAL]);
- 			return 1;
- 		}
- 		if(menor_distacia == 0){
- 			printf("\nNão existe forma de chegar ao seu destino\n");
- 			return -2;
- 		}
- 		printf("\n");
-
- 	}
+ 	teste(nomes_dos_locais);
 
  	return 1; 	
  }
